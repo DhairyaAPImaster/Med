@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" aria-hidden="false" role="img">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#E8F0FE"/>
+      <stop offset="1" stop-color="#F9FFF9"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0" stop-color="#CDEDEA"/>
+      <stop offset="1" stop-color="#EAF6F0"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g1)"/>
+  <g transform="translate(100,100)">
+    <rect x="0" y="120" width="720" height="420" rx="24" fill="#FFFFFF" stroke="#E6EEF9" stroke-width="2"/>
+    <g transform="translate(40,40)">
+      <rect x="0" y="0" width="280" height="220" rx="16" fill="url(#g2)"/>
+      <rect x="320" y="0" width="360" height="220" rx="16" fill="#F4FAF9"/>
+      <circle cx="120" cy="340" r="80" fill="#DFF6EB"/>
+      <rect x="440" y="260" width="220" height="160" rx="14" fill="#EAF6F0"/>
+    </g>
+    <text x="420" y="360" font-family="Roboto, Arial, sans-serif" font-size="28" fill="#9EBEB0">Professional healthcare illustration</text>
+  </g>
+</svg>

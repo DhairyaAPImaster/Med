@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Healthcare Prototype — AdeptMed</title>
+
+	<!-- new: meta description + theme color -->
+	<meta name="description" content="AdeptMed — patient-centered, evidence-based healthcare. Book an appointment or phone call with our team." />
+	<meta name="theme-color" content="#1F3C88" />
+
+	<!-- Roboto fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/styles.css" />
+
+	<!-- inline footer-centering styles (small, non-invasive) -->
+	<style>
+		/* footer bottom center CTA */
+		.footer-inner{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+		.footer-bottom{width:100%;display:flex;justify-content:center;margin-top:18px}
+		.footer-bottom .book-call{
+			padding:12px 28px;border-radius:12px;background:#2EB872;color:#fff;text-decoration:none;font-weight:700;border:0;
+			box-shadow:0 10px 30px rgba(46,184,114,0.12);display:inline-block;
+		}
+		.footer-bottom .book-call:hover{transform:translateY(-3px);box-shadow:0 18px 48px rgba(46,184,114,0.18)}
+		@media (max-width:700px){ .footer-bottom .book-call{width:100%;text-align:center} }
+
+		/* new: reviews section styles */
+		.reviews{padding:60px 0}
+		.reviews-title{font-size:28px;line-height:1.2;margin-bottom:40px;text-align:center}
+		.review-card{
+			background:#fff;border-radius:12px;padding:24px;box-shadow:0 4px 8px rgba(0,0,0,0.1);margin-bottom:20px;
+			opacity:0;transform:translateY(10px);animation:fadeInUp 0.6s forwards
+		}
+		.review-card[data-rating="5"] .stars:before { content: "★★★★★"; color: #FFD700; }
+		.review-card[data-rating="4"] .stars:before { content: "★★★★☆"; color: #FFD700; }
+		.review-card .review-text{font-size:18px;line-height:1.4;margin-bottom:12px}
+		.review-meta{display:flex;align-items:center;justify-content:space-between}
+		.review-meta .author{font-size:16px;color:#666}
+		@keyframes fadeInUp {
+			from { opacity: 0; transform: translateY(10px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		/* new: reviews carousel styles */
+		.reviews-wrap {
+			overflow: hidden;
+			position: relative;
+			scroll-behavior: smooth;
+		}
+		.reviews-track {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+			will-change: transform;
+		}
+		.review-card {
+			flex: 0 0 100%;
+			max-width: 100%;
+			box-sizing: border-box;
+			padding: 16px;
+		}
+		@media (min-width: 600px) {
+			.review-card {
+				flex: 0 0 50%;
+				max-width: 50%;
+			}
+		}
+		@media (min-width: 900px) {
+			.review-card {
+				flex: 0 0 25%;
+				max-width: 25%;
+			}
+		}
+
+		/* new: Health check section styles */
+		.health-check{padding:60px 0}
+		.health-check-title{font-size:28px;line-height:1.2;margin-bottom:40px;text-align:center}
+		.health-wrap{
+			display:flex;justify-content:center;align-items:center;flex-direction:column
+		}
+		.health-btn{
+			display:inline-block;position:relative;overflow:hidden;border-radius:12px;
+			box-shadow:0 4px 8px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s
+		}
+		.health-btn:hover{transform:translateY(-3px);box-shadow:0 8px 16px rgba(0,0,0,0.2)}
+		.health-btn img{
+			display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover
+		}
+		.health-label{
+			position:absolute;bottom:0;left:0;width:100%;padding:12px 0;background:rgba(31,60,136,0.8);
+			color:#fff;font-weight:500;text-align:center;border-top-left-radius:12px;border-top-right-radius:12px;
+			transform:translateY(100%);transition:transform 0.3s
+		}
+		.health-btn:hover .health-label{transform:translateY(0)}
+		@media (max-width:700px){
+			.health-btn{width:90%;max-width:400px}
+		}
+	</style>
+</head>
+<body>
+	<!-- skip link for keyboard users -->
+	<a class="visually-hidden" href="#main-content" style="position:static;left:0;top:0;padding:8px;background:#fff;color:#1F3C88;border-radius:4px;margin:8px;z-index:999;clip:auto;">Skip to content</a>
+
+	<header class="site-header">
+		<div class="container header-inner">
+			<div class="logo" aria-hidden="true">
+				<!-- Logo placeholder -->
+				<div class="logo-mark">HC</div>
+				<span class="logo-text">AdeptMed</span>
+			</div>
+
+			<nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+				<ul>
+					<li><a href="#home" class="nav-link">Home</a></li>
+					<li><a href="#services" class="nav-link">Services</a></li>
+					<li><a href="#about" class="nav-link">About Us</a></li>
+					<li><a href="#contact" class="nav-link">Contact</a></li>
+				</ul>
+			</nav>
+
+			<button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+				<span class="hamburger" aria-hidden="true"></span>
+			</button>
+		</div>
+	</header>
+
+	<main id="main-content">
+		<section id="home" class="hero" aria-labelledby="hero-title">
+			<div class="container hero-inner">
+				<div class="hero-copy">
+					<h1 id="hero-title" class="hero-title">Your Trusted Healthcare Partner</h1>
+					<p class="hero-tagline">Compassionate care, modern medicine — always in reach.</p>
+					<!-- only the hero uses the Uiverse style -->
+					<a href="#contact" class="uiverse-btn" role="button">Book an Appointment</a>
+				</div>
+				<div class="hero-image-wrap">
+					<!-- Replace NEW_HERO_IMAGE.ext with your renamed hero image -->
+					<img src="C:\Users\Dhairu\Documents\GitHub\AdeptMed\assets\images\doctor.jpg" alt="Illustration of healthcare professionals and patients" class="hero-image" loading="lazy" decoding="async" />
+				</div>
+			</div>
+		</section>
+
+		<section id="services" class="services">
+			<div class="container">
+				<h2 class="section-title">Our Services</h2>
+				<div class="cards">
+					<article class="card">
+						<!-- Replace NEW_SERVICE_GENERAL.ext --> 
+						<h3 class="card-title">General Medicine</h3>
+						<p class="card-desc">Comprehensive adult care and preventive services.</p>
+					</article>
+
+					<article class="card">
+						<!-- Replace NEW_SERVICE_PEDIATRICS.ext -->
+						<h3 class="card-title">Pediatrics</h3>
+						<p class="card-desc">Child-focused care with a gentle approach.</p>
+					</article>
+
+					<article class="card">
+						<!-- Replace NEW_SERVICE_TELEHEALTH.ext -->
+						<h3 class="card-title">Telehealth</h3>
+						<p class="card-desc">Virtual visits for convenient, remote care.</p>
+					</article>
+
+					<article class="card">
+						<!-- Replace NEW_SERVICE_SPECIALTY.ext -->
+						<h3 class="card-title">Specialty Clinics</h3>
+						<p class="card-desc">Targeted services for chronic and complex conditions.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- Reviews: horizontal track with 4 review cards -->
+		<section id="reviews" class="reviews" aria-labelledby="reviews-title">
+			<div class="container">
+				<h2 id="reviews-title" class="section-title">What Patients Say</h2>
+
+				<!-- horizontal container: will auto-scroll via JS -->
+				<div class="reviews-wrap" aria-live="polite">
+					<div class="reviews-track">
+						<article class="review-card" data-rating="5">
+							<p class="review-text">"AdeptMed's team was professional and caring — best experience I've had with a healthcare provider."</p>
+							<div class="review-meta">
+								<div class="stars" aria-hidden="true">★★★★★</div>
+								<div class="author">— Emily R.</div>
+							</div>
+						</article>
+
+						<article class="review-card" data-rating="4">
+							<p class="review-text">"Efficient appointment scheduling and clear follow-up instructions. Highly recommend."</p>
+							<div class="review-meta">
+								<div class="stars" aria-hidden="true">★★★★☆</div>
+								<div class="author">— Mark D.</div>
+							</div>
+						</article>
+
+						<article class="review-card" data-rating="5">
+							<p class="review-text">"Compassionate care, great telehealth experience. Helped me immediately."</p>
+							<div class="review-meta">
+								<div class="stars" aria-hidden="true">★★★★★</div>
+								<div class="author">— Priya S.</div>
+							</div>
+						</article>
+
+						<article class="review-card" data-rating="4">
+							<p class="review-text">"Friendly staff and knowledgeable clinicians. Modern and clean facility."</p>
+							<div class="review-meta">
+								<div class="stars" aria-hidden="true">★★★★☆</div>
+								<div class="author">— James K.</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- new: Health check section with square image button -->
+		<section id="health-check" class="health-check" aria-labelledby="health-check-title">
+			<div class="container">
+				<h2 id="health-check-title" class="section-title">Check Your Health</h2>
+
+				<div class="health-wrap">
+					<!-- square image button - replace asset when ready -->
+					<a class="health-btn reveal" href="https://fitnessmaniac.lovable.app/" target="_blank" rel="noopener noreferrer" aria-label="Check your health">
+						<!-- Replace NEW_HEALTH_CHECK.ext -->
+						<img src="D:\Dhairya\trial for lead\assets\images\Screenshot 2025-10-22 082653.png" alt="Fitness assessment illustration" loading="lazy" decoding="async" />
+						<span class="health-label">Check Your Health</span>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="about" class="about">
+			<div class="container about-inner">
+				<div class="about-copy">
+					<h2 class="section-title">About Us</h2>
+					<p class="about-text">We are a US-based healthcare provider focused on patient-centered care, evidence-based practice, and a collaborative team approach. Our mission is to make quality healthcare accessible and compassionate.</p>
+				</div>
+
+				<div class="team">
+					<div class="team-member reveal">
+						<!-- Replace NEW_TEAM_1.ext -->
+						<img class="team-photo" src="D:\Dhairya\trial for lead\assets\images\doctor 3.jpg" alt="Dr. A. Smith" loading="lazy" decoding="async" />
+						<p class="team-name">Dr. A. Smith</p>
+					</div>
+					<div class="team-member reveal">
+						<!-- Replace NEW_TEAM_2.ext -->
+						<img class="team-photo" src="D:\Dhairya\trial for lead\assets\images\doctor2.jpg" alt="Nurse J. Lee" loading="lazy" decoding="async" />
+						<p class="team-name">Nurse J. Lee</p>
+					</div>
+					<div class="team-member reveal">
+						<!-- Replace NEW_TEAM_3.ext -->
+						<img class="team-photo" src="D:\Dhairya\trial for lead\assets\images\doctor1.jpg" alt="P. Johnson" loading="lazy" decoding="async" />
+						<p class="team-name">P. Johnson</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact" class="contact" aria-labelledby="contact-title">
+			<div class="container contact-inner">
+				<!-- simplified contact: header only (CTA moved to footer) -->
+				<div class="contact-center">
+					<h2 id="contact-title" class="section-title">Contact Us</h2>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer" role="contentinfo">
+		<!-- footer displays only the centered CTA as requested -->
+		<div class="footer-bottom">
+			<a class="book-call" href="https://calendly.com/dhairyakhannabuiss/new-meeting" target="_blank" rel="noopener noreferrer" aria-label="Book Phone Call">Book Phone Call</a>
+		</div>
+	</footer>
+
+	<script src="js/main.js"></script>
+
+	<!-- small enhancement: keep aria-expanded in sync + close nav with Escape -->
+	<script>
+		(function(){
+			const toggle = document.getElementById('nav-toggle');
+			const nav = document.getElementById('site-nav');
+
+			if(!toggle || !nav) return;
+			toggle.addEventListener('click', () => {
+				const expanded = toggle.getAttribute('aria-expanded') === 'true';
+				toggle.setAttribute('aria-expanded', String(!expanded));
+				nav.classList.toggle('open');
+			});
+
+			document.addEventListener('keydown', (e) => {
+				if(e.key === 'Escape' && nav.classList.contains('open')){
+					nav.classList.remove('open');
+					toggle.setAttribute('aria-expanded', 'false');
+					toggle.focus();
+				}
+			});
+		})();
+	</script>
+</body>
+</html>
